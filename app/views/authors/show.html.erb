@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @author.name %></h1>
+<%= link_to 'Edit-Author', edit_author_path(@author) %>
+
+<br>
+<br>
+
+<%= render 'books/form' %>
+<table>
+  <thead>
+    
+  </thead>
+
+  <tbody>
+    <% @author.books.each do |book| %>
+      <tr>
+        <td><h2><%= book.name  %></h2></td>
+        <td><%= link_to 'Learn-Book', author_book_path(@author) %></td>
+        <td><%= link_to 'Edit', edit_author_book_path(@author) %></td>
+        <td><%= link_to 'Destroy',  [book.author, book],method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', authors_path %>
